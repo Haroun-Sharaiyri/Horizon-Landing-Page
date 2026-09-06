@@ -5,7 +5,10 @@
    and hero mouse-parallax. Respects prefers-reduced-motion.
    ================================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
+import { ParticleSystem } from './particles.js';
+import { initPreloader, initScrollAnimations, showAllImmediately, gsap, ScrollTrigger } from './animations.js';
+
+function boot() {
   const prefersReducedMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)'
   ).matches;
@@ -341,4 +344,10 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     });
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
+}

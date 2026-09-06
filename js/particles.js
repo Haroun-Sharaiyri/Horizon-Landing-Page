@@ -9,7 +9,7 @@
    3 depth layers for parallax illusion.
    ================================================================ */
 
-class ParticleSystem {
+export class ParticleSystem {
   constructor(canvasId) {
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) return;

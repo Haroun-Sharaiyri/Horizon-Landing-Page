@@ -9,11 +9,16 @@
    5. Footer fade-in
    ================================================================ */
 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 /* Register GSAP plugin */
 gsap.registerPlugin(ScrollTrigger);
 
+export { gsap, ScrollTrigger };
+
 /* ── Preloader + Hero Reveal ──────────────────────────────────── */
-function initPreloader(onComplete) {
+export function initPreloader(onComplete) {
   const tl = gsap.timeline({
     onComplete: () => {
       const preloader = document.getElementById('preloader');
@@ -90,7 +95,7 @@ function revealHero() {
 }
 
 /* ── Scroll Animations ────────────────────────────────────────── */
-function initScrollAnimations() {
+export function initScrollAnimations() {
   /* ·· Scroll indicator: fade out on scroll ·· */
   gsap.to('.scroll-indicator', {
     opacity: 0,
@@ -219,7 +224,7 @@ function initScrollAnimations() {
 }
 
 /* ── Reduced motion variant ───────────────────────────────────── */
-function showAllImmediately() {
+export function showAllImmediately() {
   document.getElementById('preloader').style.display = 'none';
   document.body.style.overflow = '';
 
