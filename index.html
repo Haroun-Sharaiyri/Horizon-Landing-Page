@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizon</title>
+  <meta name="description" content="Experience the extraordinary — Horizon">
+  <meta name="theme-color" content="#050A1A">
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Favicon (logo) -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ===================== PRELOADER ===================== -->
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <img src="assets/images/logo.png" alt="" class="preloader-logo" draggable="false">
+        <div class="preloader-shimmer"></div>
+      </div>
+      <div class="preloader-line"></div>
+    </div>
+  </div>
+
+  <!-- ============= SPARKLE / DUST PARTICLE OVERLAY ============= -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===================== HERO SECTION ===================== -->
+  <section id="hero" class="section">
+    <!-- Animated gradient orbs background -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+      <div class="gradient-orb orb-4"></div>
+    </div>
+
+    <!-- Mouse-follow spotlight (set via CSS custom properties) -->
+    <div class="hero-spotlight" aria-hidden="true"></div>
+
+    <!-- Main hero content -->
+    <div class="hero-content">
+      <img src="assets/images/logo.png" alt="Horizon" class="hero-logo" draggable="false">
+      <p class="hero-tagline">Experience the Extraordinary</p>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="scroll-indicator" aria-label="Scroll down">
+      <span class="scroll-text">Scroll</span>
+      <div class="scroll-line">
+        <div class="scroll-line-inner"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== VIDEO SHOWCASE =================== -->
+  <section id="video-section" class="section">
+    <!-- Header / Title above video -->
+    <div class="video-header">
+      <div class="video-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">Next Step</span>
+      </div>
+      <h2 class="video-title">You've Booked a Call! Watch this 1-Min Video</h2>
+      <p class="video-subtitle">Please watch this quick overview before our meeting</p>
+    </div>
+
+    <div class="video-container" id="video-container">
+      <video id="hero-video"
+             autoplay
+             muted
+             loop
+             playsinline
+             webkit-playsinline
+             preload="auto">
+        <source src="assets/video/Horizon%20VSL.mp4" type="video/mp4">
+      </video>
+      <div class="video-play-hint" id="video-play-hint" aria-hidden="true">
+        <div class="play-hint-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </div>
+      </div>
+      <div class="video-vignette" aria-hidden="true"></div>
+
+      <!-- Luxury Video Controls Bar (progress, remaining time, sound, fullscreen) -->
+      <div class="video-controls-bar" id="video-controls-bar">
+        <!-- Play / Pause button -->
+        <button class="video-control-btn play-pause-btn" id="play-pause-btn" type="button" aria-label="Play or Pause">
+          <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+        </button>
+
+        <!-- Progress / Seek Bar -->
+        <div class="video-progress-container" id="video-progress-container" role="slider" aria-label="Video progress" tabindex="0">
+          <div class="video-progress-track">
+            <div class="video-progress-fill" id="video-progress-fill">
+              <span class="video-progress-thumb"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Time indicators: Elapsed / Total + Left -->
+        <div class="video-time-wrap">
+          <span id="video-current-time">0:00</span>
+          <span class="time-sep">/</span>
+          <span id="video-duration">0:00</span>
+          <span class="video-time-remaining" id="video-time-remaining">(-0:00)</span>
+        </div>
+
+        <!-- Sound Toggle -->
+        <button class="video-control-btn sound-toggle-btn" id="sound-toggle" type="button" aria-label="Toggle sound">
+          <!-- Muted icon -->
+          <svg class="icon-muted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+          <!-- Unmuted icon -->
+          <svg class="icon-unmuted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+        </button>
+
+        <!-- Fullscreen Toggle -->
+        <button class="video-control-btn fullscreen-btn" id="fullscreen-btn" type="button" aria-label="Toggle fullscreen">
+          <!-- Enter fullscreen icon -->
+          <svg class="icon-fs-enter" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+          </svg>
+          <!-- Exit fullscreen icon -->
+          <svg class="icon-fs-exit" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================== BRAND STATEMENT ================== -->
+  <section id="brand-statement" class="section">
+    <div class="statement-content">
+      <p class="statement-text">
+        Every great story begins just beyond the horizon
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="footer">
+    <img src="assets/images/logo.png" alt="Horizon" class="footer-logo" draggable="false">
+    <p class="footer-copyright">&copy; 2026 Horizon. All rights reserved.</p>
+  </footer>
+
+  <!-- =================== SCRIPTS =================== -->
+  <!-- GSAP + ScrollTrigger (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- App modules -->
+  <script src="js/particles.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
