@@ -108,10 +108,7 @@ export function initScrollAnimations() {
     }
   });
 
-  /* ·· Video: entrance and auto-play on view (fixed size, no scale) ·· */
-  const videoContainer = document.getElementById('video-container');
-  const heroVideo = document.getElementById('hero-video');
-
+  /* ·· Video Section Reveal ·· */
   const videoHeader = document.querySelector('.video-header');
   if (videoHeader) {
     gsap.fromTo(videoHeader,
@@ -130,6 +127,7 @@ export function initScrollAnimations() {
     );
   }
 
+  const videoContainer = document.getElementById('video-container');
   if (videoContainer) {
     gsap.fromTo(videoContainer,
       { opacity: 0, y: 35 },
@@ -143,41 +141,9 @@ export function initScrollAnimations() {
           trigger: '#video-section',
           start: 'top 80%',
           once: true,
-          onEnter: () => {
-            if (heroVideo && heroVideo.paused) {
-              heroVideo.play().catch(() => {});
-            }
-          }
         }
       }
     );
-
-    // Auto play/pause when video section enters/leaves viewport
-    ScrollTrigger.create({
-      trigger: '#video-section',
-      start: 'top 85%',
-      end: 'bottom 15%',
-      onEnter: () => {
-        if (heroVideo && heroVideo.paused) {
-          heroVideo.play().catch(() => {});
-        }
-      },
-      onLeave: () => {
-        if (heroVideo && !heroVideo.paused) {
-          heroVideo.pause();
-        }
-      },
-      onEnterBack: () => {
-        if (heroVideo && heroVideo.paused) {
-          heroVideo.play().catch(() => {});
-        }
-      },
-      onLeaveBack: () => {
-        if (heroVideo && !heroVideo.paused) {
-          heroVideo.pause();
-        }
-      }
-    });
   }
 
   /* ·· Brand Statement: word-by-word reveal ·· */
