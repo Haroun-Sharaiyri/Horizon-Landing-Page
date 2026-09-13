@@ -146,6 +146,25 @@ export function initScrollAnimations() {
     );
   }
 
+  const videoCta = document.querySelector('.video-cta-wrap');
+  if (videoCta) {
+    gsap.fromTo(videoCta,
+      { opacity: 0, y: 25 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.1,
+        delay: 0.3,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#video-section',
+          start: 'top 80%',
+          once: true,
+        }
+      }
+    );
+  }
+
   /* ·· Brand Statement: word-by-word reveal ·· */
   const statementEl = document.querySelector('.statement-text');
   if (statementEl) {
@@ -219,5 +238,9 @@ export function showAllImmediately() {
   const vc = document.getElementById('video-container');
   if (vc) {
     gsap.set(vc, { opacity: 1, y: 0 });
+  }
+  const vcta = document.querySelector('.video-cta-wrap');
+  if (vcta) {
+    gsap.set(vcta, { opacity: 1, y: 0 });
   }
 }

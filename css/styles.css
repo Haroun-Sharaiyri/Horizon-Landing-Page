@@ -416,6 +416,95 @@ body {
   display: block;
 }
 
+/* ── Video CTA Button ────────────────────────────────────────── */
+.video-cta-wrap {
+  margin-top: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10;
+  text-align: center;
+}
+
+.cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.1rem 2.6rem;
+  background: linear-gradient(135deg, var(--cyan) 0%, #0084ff 50%, var(--blue) 100%);
+  color: #030712;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 
+    0 4px 25px rgba(var(--cyan-rgb), 0.4),
+    0 0 50px rgba(var(--blue-rgb), 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 8px 35px rgba(var(--cyan-rgb), 0.6),
+    0 0 60px rgba(var(--blue-rgb), 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  filter: brightness(1.08);
+}
+
+.cta-button:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.cta-button-text {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-arrow {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cta-button:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+.cta-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  animation: ctaShine 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ctaShine {
+  0%, 70% { left: -100%; }
+  100%    { left: 200%; }
+}
+
+.cta-subtext {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--white-dim);
+  opacity: 0.75;
+}
+
 /* ================================================================
    BRAND STATEMENT
    ================================================================ */
@@ -528,6 +617,18 @@ body {
       0 0 20px rgba(var(--cyan-rgb), 0.1);
   }
 
+  .video-cta-wrap {
+    margin-top: 1.8rem;
+    width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 380px;
+    padding: 1.05rem 1.6rem;
+    font-size: 0.95rem;
+  }
+
   #brand-statement {
     padding: 5rem 1.25rem;
     min-height: auto;
@@ -563,7 +664,8 @@ body {
   .scroll-indicator,
   #footer,
   .video-header,
-  .video-container {
+  .video-container,
+  .video-cta-wrap {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -571,5 +673,9 @@ body {
   .statement-text .word {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .cta-shine {
+    display: none !important;
   }
 }
